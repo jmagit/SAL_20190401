@@ -7,20 +7,28 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MyCoreModule, LoggerService } from 'src/my-core';
+import { PERSONAS_COMPONENT } from './personas/personas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PERSONAS_COMPONENT,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    MyCoreModule,
   ],
-  providers: [],
+  providers: [
+    LoggerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
