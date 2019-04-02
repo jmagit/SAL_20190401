@@ -5,6 +5,8 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor, LoggingInterceptor } from './services/serguridad.service';
 
 const routes: Routes = [
   { path: 'registro', component: RegisterUserComponent },
@@ -16,5 +18,8 @@ const routes: Routes = [
   ],
   declarations: [ LoginComponent, RegisterUserComponent ],
   exports: [ LoginComponent, RegisterUserComponent ],
+  providers: [
+
+  ]
 })
 export class SecurityModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PersonasViewModelService } from './personas.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { AuthService } from '../security';
 
 @Component({
   selector: 'app-personas',
@@ -24,7 +25,7 @@ export class PersonasComponent implements OnInit {
   styleUrls: ['./personas.component.css']
 })
 export class PersonasListComponent implements OnInit {
-  constructor(private vm: PersonasViewModelService) { }
+  constructor(private vm: PersonasViewModelService, public auth: AuthService) { }
   public get VM() { return this.vm; }
   ngOnInit() {
     this.vm.list();

@@ -67,7 +67,7 @@ export class LoginService {
   }
 }
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService) { }
 
@@ -82,7 +82,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 }
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class LoggingInterceptor implements HttpInterceptor {
   constructor(@Optional() private out: LoggerService) {}
 

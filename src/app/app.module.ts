@@ -7,10 +7,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyCoreModule, LoggerService } from 'src/my-core';
 import { PERSONAS_COMPONENT } from './personas/personas.component';
+import { CommonAppModule } from './common-app';
+import { NotificationComponent } from './notification/notification.component';
+import { AjaxWaitInterceptor, AjaxWaitComponent } from './ajax-wait/ajax-wait';
+import { SecurityModule, LoggingInterceptor, AuthInterceptor } from './security';
 
 @NgModule({
   declarations: [
@@ -19,15 +23,20 @@ import { PERSONAS_COMPONENT } from './personas/personas.component';
     MenuComponent,
     PageNotFoundComponent,
     PERSONAS_COMPONENT,
+    NotificationComponent,
+    AjaxWaitComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule,
     NgbModule,
-    MyCoreModule,
+    MyCoreModule, CommonAppModule, SecurityModule,
   ],
   providers: [
-    LoggerService
+    LoggerService,
+    { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
+    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true, },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
   ],
   bootstrap: [AppComponent]
 })

@@ -19,7 +19,7 @@ export class AjaxWaitService {
 }
 
 // { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AjaxWaitInterceptor implements HttpInterceptor {
   constructor(private srv: AjaxWaitService) {}
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

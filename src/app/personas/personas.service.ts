@@ -3,14 +3,15 @@ import { ModoCRUD } from '../code-base/tipos';
 import { RESTDAOService } from '../code-base/dao';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NotificationService } from '../common-app';
+import { NotificationService, NavigateService } from '../common-app';
+import { nsend } from 'q';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonasDaoService extends RESTDAOService<any, any> {
   constructor(http: HttpClient) {
-    super(http, 'personas');
+    super(http, 'personas', { withCredentials: true });
   }
 }
 @Injectable({
@@ -24,7 +25,8 @@ export class PersonasViewModelService {
   protected urlList = '/personas';
 
   constructor(protected notify: NotificationService,
-    protected dao: PersonasDaoService, private router: Router) { }
+    protected dao: PersonasDaoService, private router: Router,
+    protected ns: NavigateService) { }
 
   public get Listado() { return this.listado; }
   public get Modo() { return this.modo; }
@@ -74,7 +76,8 @@ export class PersonasViewModelService {
     this.elemento = {};
     this.idOriginal = null;
     // this.list();
-    this.router.navigateByUrl(this.urlList);
+    // this.router.navigateByUrl(this.urlList);
+    this.ns.goBack();
   }
   public send() {
     switch (this.modo) {
