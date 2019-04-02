@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent},
   { path: 'inicio', component: HomeComponent},
 
+  { path: 'config', loadChildren: './config/config.module#ConfigModule' },
   { path: '404.html', component: PageNotFoundComponent},
   { path: '**', component: PageNotFoundComponent},
 
