@@ -23,12 +23,14 @@ export class NavigateService {
         }
       });
   }
-  goBack() {
+  goBack(URLDefault: string = '/') {
     if (this.history.length > 0) {
       const last = this.history[this.history.length - 1];
       this.history.splice(this.history.length - 1, 1);
       this.isBack = true;
       this.router.navigateByUrl(last);
+    } else {
+      this.router.navigateByUrl(URLDefault);
     }
   }
 }

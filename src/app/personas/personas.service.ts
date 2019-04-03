@@ -77,7 +77,7 @@ export class PersonasViewModelService {
     this.idOriginal = null;
     // this.list();
     // this.router.navigateByUrl(this.urlList);
-    this.ns.goBack();
+    this.ns.goBack(this.urlList);
   }
   public send() {
     switch (this.modo) {

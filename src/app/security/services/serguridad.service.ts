@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpInterceptor, HttpRequest, HttpHandle
 import { Observable } from 'rxjs';
 import { tap, finalize } from 'rxjs/operators';
 import { LoggerService } from '../../../my-core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -50,7 +51,7 @@ export class LoginService {
 
   login(usr: string, pwd: string) {
     return new Observable(observable =>
-      this.http.post('http://localhost:4321/login', { name: usr, password: pwd })
+      this.http.post(environment.authURL + 'login', { name: usr, password: pwd })
         .subscribe(
           data => {
             if (data['success'] === true) {
@@ -126,7 +127,7 @@ export class User {
 
 @Injectable({providedIn: 'root'})
 export class RegisterUserDAO  {
-  private baseUrl = 'http://localhost:4321/register ';
+  private baseUrl = environment.authURL + 'register ';
   private options = { withCredentials: true };
 
   constructor(private http: HttpClient) { }
