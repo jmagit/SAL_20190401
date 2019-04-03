@@ -9,7 +9,7 @@
       {{item.nombre}} {{item.apellidos}}</a></td>
     <td>
       <input type="button" value="Editar" [routerLink]="[item.id, 'edit']">
-      <input *ngIf="auth.isAutenticated" type="button" value="Borrar" (click)="VM.delete(item.id)">
+      <input *ngIf="auth.isAutenticated" type="button" value="Borrar" (myWinConfirm)="VM.delete(item.id)" myWinConfirmMessage="Desde la plantilla">
     </td>
   </tr>
 </table>

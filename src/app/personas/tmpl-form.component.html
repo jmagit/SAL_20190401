@@ -3,8 +3,9 @@
     Código:
     <ng-container *ngIf="VM.Modo === 'add'">
       <input type="number" id="id" name="id" [(ngModel)]="VM.Elemento.id" #id="ngModel"
-        required>
+        required naturalNumber>
       <span class="error" [hidden]="!id.hasError('required') || miForm.pristine" >Es obligatorio</span>
+      <span class="error" [myShow]="id?.errors?.naturalNumber">No es natural</span>
     </ng-container>
     <ng-container *ngIf="VM.Modo !== 'add'">
      {{VM.Elemento.id}}
@@ -19,7 +20,7 @@
     <br>
     Apellidos:
     <input type="text" id="apellidos" name="apellidos" [(ngModel)]="VM.Elemento.apellidos" #apellidos="ngModel"
-      minlength="2" maxlength="10" ><!-- upperCase validateEqual="nombre" -->
+      minlength="2" maxlength="10" validateEqual="nombre"><!-- upperCase validateEqual="nombre" -->
     <span class="error" [hidden]="!apellidos?.errors?.minlength && !apellidos?.errors?.maxlength">
       Debe tener entre 2 y 10 letras</span>
     <span class="error" [hidden]="!apellidos?.errors?.upperCase">Tiene que estar en mayúsculas</span>
@@ -35,4 +36,6 @@
       <input type="button" value="Enviar" [disabled]="miForm.invalid" (click)="VM.send()">
       <input type="button" value="Volver" (click)="VM.cancel()">
   </p>
+  <my-form-button [disabled]="miForm.invalid"
+    (sendClick)="VM.send()" (cancelClick)="VM.cancel()"></my-form-button>
 </form>

@@ -1,4 +1,4 @@
-<ng-container *ngIf="!loginSrv.isAutenticated">
+<ng-container *myUnless="loginSrv.isAutenticated">
   <form #logForm="ngForm" class="form-inline my-2 my-lg-0">
     <div class="input-group" role="group" aria-label="Login Form">
       <input class="form-control-sm" [size]="8" type="text" [(ngModel)]="txtUsuario" required minlength="4" placeholder="Usuario"

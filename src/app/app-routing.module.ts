@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PersonasListComponent, PersonasViewComponent, PersonasEditComponent, PersonasAddComponent } from './personas/personas.component';
 import { AuthGuard } from './security';
+import { DinamicoComponent } from './dinamico/dinamico.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: '**', component: PersonasViewComponent},
     ]},
   ]},
+  { path: 'dinamico', component: DinamicoComponent},
   { path: 'config', loadChildren: './config/config.module#ConfigModule' },
   { path: '404.html', component: PageNotFoundComponent},
   { path: '**', component: PageNotFoundComponent},

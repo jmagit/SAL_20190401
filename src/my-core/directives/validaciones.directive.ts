@@ -104,10 +104,12 @@ export class MaxValidator implements Validator,
     this._validator = Validators.max(parseInt(this.max, 10));
   }
 }
-
+export function naturalNumberValidation(value: any) {
+  return /^[1-9]\d*$/.test(value);
+}
 export function naturalNumberValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} => {
-    return /^[1-9]\d*$/.test(control.value) ? null : { naturalNumber: { valid: false } };
+    return naturalNumberValidation(control.value) ? null : { naturalNumber: { valid: false } };
   };
 }
 @Directive({

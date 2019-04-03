@@ -6,6 +6,7 @@ import { NUMERICOS_PIPES } from './pipes/numericos.pipe';
 import { VALIDACIONES_DIRECTIVES } from './directives/validaciones.directive';
 import { WindowConfirmDirective, ShowDirective } from './directives/atributo.directive';
 import { UnlessDirective } from './directives/estructurales.directive';
+import { CardComponent, FormButtonComponent } from './components/card.component';
 
 @NgModule({
   imports: [
@@ -13,18 +14,20 @@ import { UnlessDirective } from './directives/estructurales.directive';
   ],
   declarations: [ FontSizerComponent, CADENAS_PIPES, NUMERICOS_PIPES,
     VALIDACIONES_DIRECTIVES, WindowConfirmDirective, UnlessDirective, ShowDirective,
+    CardComponent, FormButtonComponent,
   ],
   exports: [ FontSizerComponent, CADENAS_PIPES, NUMERICOS_PIPES,
     VALIDACIONES_DIRECTIVES, WindowConfirmDirective, UnlessDirective, ShowDirective,
+    CardComponent, FormButtonComponent,
   ],
 })
 export class MyCoreModule {
-  constructor( @Optional() @SkipSelf() parentModule: MyCoreModule) {
-    if (parentModule) {
-      // tslint:disable-next-line:no-trailing-whitespace
-      const msg = `ModuleName has already been loaded.
-        Import ModuleName once, only, in the root AppModule.`;
-      throw new Error(msg);
-    }
-  }
+  // constructor( @Optional() @SkipSelf() parentModule: MyCoreModule) {
+  //   if (parentModule) {
+  //     // tslint:disable-next-line:no-trailing-whitespace
+  //     const msg = `ModuleName has already been loaded.
+  //       Import ModuleName once, only, in the root AppModule.`;
+  //     throw new Error(msg);
+  //   }
+  // }
 }

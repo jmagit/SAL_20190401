@@ -15,6 +15,7 @@ import { CommonAppModule } from './common-app';
 import { NotificationComponent } from './notification/notification.component';
 import { AjaxWaitInterceptor, AjaxWaitComponent } from './ajax-wait/ajax-wait';
 import { SecurityModule, LoggingInterceptor, AuthInterceptor } from './security';
+import { DinamicoComponent } from './dinamico/dinamico.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SecurityModule, LoggingInterceptor, AuthInterceptor } from './security'
     PERSONAS_COMPONENT,
     NotificationComponent,
     AjaxWaitComponent,
+    DinamicoComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule,
