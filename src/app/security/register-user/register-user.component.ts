@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { User, RegisterUserDAO, LoginService } from '../services/serguridad.service';
 import { Router } from '@angular/router';
@@ -8,7 +8,8 @@ import { NotificationService, NotificationType } from '../../common-app';
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css']
+  styleUrls: ['./register-user.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterUserComponent implements OnInit {
   public miForm: FormGroup;
@@ -45,17 +46,24 @@ export class RegisterUserComponent implements OnInit {
   }
   private formatErrorMessage(cntr: FormControl) {
     if (cntr.invalid) {
+      let msg = '';
+
       if (cntr.hasError('required')) {
-        cntr.setErrors({'customMsg': 'Es obligatorio.'});
-      } else if (cntr.hasError('minlength')) {
-        cntr.setErrors({'customMsg': `Al menos debe tener ${cntr.getError('minlength').requiredLength} caracteres.`});
-      } else if (cntr.hasError('maxlength')) {
-        cntr.setErrors({'customMsg': `Como máximo puede tener ${cntr.getError('maxlength').requiredLength} caracteres.`});
-      } else if (cntr.hasError('email')) {
-        cntr.setErrors({'customMsg': 'Formato incorrecto de correo electronico.'});
-      } else if (cntr.hasError('mismatch')) {
-        cntr.setErrors({'customMsg': 'No coincide.'});
+        msg += 'Es obligatorio. ';
       }
+      if (cntr.hasError('minlength')) {
+        msg += `Al menos debe tener ${cntr.getError('minlength').requiredLength} caracteres. `;
+      }
+      if (cntr.hasError('maxlength')) {
+        msg += `Como máximo puede tener ${cntr.getError('maxlength').requiredLength} caracteres. `;
+      }
+      if (cntr.hasError('email')) {
+        msg += 'Formato incorrecto de correo electronico. ';
+      }
+      if (cntr.hasError('mismatch')) {
+        msg += 'No coincide. ';
+      }
+      cntr.setErrors({'customMsg': msg.trim()});
     }
   }
   addRole() {

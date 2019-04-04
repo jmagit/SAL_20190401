@@ -1,33 +1,38 @@
-<form [formGroup]="miForm" class="was-validated" [class.is-invalid]="miForm.invalid">
-  <div class="form-group">
-    <label [class.is-invalid]="miForm.hasError('customMsg', 'idUsuario')">User:
-      <input class="form-control" type="text" formControlName="idUsuario">
-      <span class="errorMsg">{{miForm.getError('customMsg', 'idUsuario')}}</span>
+<form [formGroup]="miForm" [class.is-invalid]="miForm.invalid" (submit)="send()">
+  <div class="form-group" [class.is-invalid]="miForm.hasError('customMsg', 'idUsuario')">
+    <label>User:
     </label>
+    <input class="form-control" [class.is-invalid]="miForm.hasError('customMsg', 'idUsuario')" type="text"
+      formControlName="idUsuario">
+    <span class="invalid-feedback"
+      [class.is-invalid]="miForm.hasError('customMsg', 'idUsuario')">{{miForm.getError('customMsg', 'idUsuario')}}</span>
+      {{miForm.get('idUsuario')?.errors | json}}
   </div>
   <div class="form-group">
     <label>Name:
-      <input class="form-control" type="text" formControlName="nombre">
     </label>
-    <span class="errorMsg">{{miForm.getError('customMsg', 'nombre')}}</span>
+    <input class="form-control" [class.is-invalid]="miForm.hasError('customMsg', 'nombre')" type="text" formControlName="nombre">
+    <span class="invalid-feedback" [class.is-invalid]="miForm.hasError('customMsg', 'nombre')">{{miForm.getError('customMsg', 'nombre')}}</span>
+    {{miForm.get('nombre')?.errors | json}}
   </div>
   <fieldset formGroupName="password">
     <div class="form-group">
       <label>Password:
-        <input class="form-control" type="password" formControlName="passwordValue">
       </label>
-      {{miForm?.get('password')?.get('passwordValue')?.errors | json}}
-      <span class="errorMsg">{{miForm.getError('customMsg', ['password','passwordValue'])}}</span>
+      <input class="form-control" type="password" formControlName="passwordValue" [class.is-invalid]="miForm.hasError('customMsg', ['password','passwordValue'])">
+      <span class="invalid-feedback" [class.is-invalid]="miForm.hasError('customMsg', ['password','passwordValue'])">{{miForm.getError('customMsg', ['password','passwordValue'])}}</span>
+      passwordValue: {{miForm?.get('password')?.get('passwordValue')?.errors | json}}
     </div>
     <div class="form-group">
       <label>Confirm Password:
-        <input class="form-control" type="password" formControlName="passwordConfirm">
-        <span class="errorMsg">{{miForm.getError('customMsg', ['password','passwordConfirm'])}}</span>
       </label>
+      <input class="form-control" type="password" formControlName="passwordConfirm" [class.is-invalid]="miForm.hasError('customMsg', ['password','passwordConfirm'])">
+      <span class="invalid-feedback" [class.is-invalid]="miForm.hasError('customMsg', ['password','passwordConfirm']) || miForm.hasError('mismatch', 'password')">{{miForm.getError('customMsg', ['password','passwordConfirm'])}}</span>
+      passwordConfirm: {{miForm?.get('password')?.get('passwordConfirm')?.errors | json}}
+      <span [hidden]="!miForm.hasError('mismatch', 'password')">No coincide con la contraseña</span>
     </div>
-
+    password: {{miForm?.get('password')?.errors | json}}
   </fieldset>
-  {{miForm?.get('password')?.errors | json}}
   <div formArrayName="roles">
     <h4>Roles
       <button class="btn btn-info btn-sm" (click)="addRole()">Add Role</button>
@@ -47,5 +52,5 @@
       </li>
     </ul>
   </div>
-  <button class="btn btn-outline-primary" (click)="send()" [disabled]="miForm.invalid">Send</button>
+  <button class="btn btn-outline-primary" [disabled]="miForm.invalid">Send</button>
 </form>{{ miForm.value | json }}

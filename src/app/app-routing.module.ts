@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PersonasListComponent, PersonasViewComponent, PersonasEditComponent, PersonasAddComponent } from './personas/personas.component';
-import { AuthGuard } from './security';
+import { AuthGuard, RegisterUserComponent } from './security';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 
 const routes: Routes = [
@@ -19,6 +19,7 @@ const routes: Routes = [
     ]},
   ]},
   { path: 'dinamico', component: DinamicoComponent},
+  { path: 'registro', component: RegisterUserComponent},
   { path: 'config', loadChildren: './config/config.module#ConfigModule' },
   { path: '404.html', component: PageNotFoundComponent},
   { path: '**', component: PageNotFoundComponent},
