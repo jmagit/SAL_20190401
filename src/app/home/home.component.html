@@ -28,3 +28,11 @@
 <p>
 Fecha:  {{ fecha | date }} {{ msg.Common.Errors.maxleng }}
 </p>
+<h1>{{ numero | localnumber:idioma:'1.0-8' }}</h1>
+<h2>{{ numero }}</h2>
+<p>
+  Cantidad: <input [(ngModel)]="numero">
+  Idioma: <select [(ngModel)]="idioma" >
+    <option *ngFor="let p of idiomas" [value]="p.codigo">{{p.region}}</option>
+  </select>
+</p>
