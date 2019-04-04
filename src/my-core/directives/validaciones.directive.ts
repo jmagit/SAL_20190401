@@ -183,6 +183,35 @@ export class TypeValidatorDirective implements Validator {
     }
 }
 
+export function NIFValidation(value: string) {
+  if (/^\d{1,8}\w$/.test(value)) {
+      const letterValue = value.substr(value.length - 1);
+      const numberValue = +value.substr(0, value.length - 1);
+      return letterValue.toUpperCase() === 'TRWAGMYFPDXBNJZSQVHLCKE'.charAt(numberValue % 23);
+  } else { return false; }
+}
+
+export function NIFValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } => {
+      const err = { valnif: { invalidNif: true} };
+      if (!control.value) { return null; }
+      return NIFValidation(control.value) ? null : err;
+  };
+}
+
+@Directive({
+  // tslint:disable-next-line:directive-selector
+  selector: '[valnif][formControlName],[valnif][formControl],[valnif][ngModel]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: NIFValidatorDirective, multi: true }]
+})
+export class NIFValidatorDirective implements Validator {
+  validate(control: AbstractControl): { [key: string]: any } {
+      if (control.value) {
+          return NIFValidator()(control);
+      }
+      return null;
+  }
+}
 
 export const VALIDACIONES_DIRECTIVES = [ UpperCaseValidatorDirective, MinValidator, MaxValidator,
-  NaturalNumberValidatorDirective, EqualValidatorDirective, TypeValidatorDirective ];
+  NaturalNumberValidatorDirective, EqualValidatorDirective, TypeValidatorDirective, NIFValidatorDirective ];

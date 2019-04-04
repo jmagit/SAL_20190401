@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/serguridad.service';
 import { NotificationService } from '../../common-app';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   txtUsuario = 'admin';
   txtPassword = 'P@$$w0rd';
 
-  constructor(public loginSrv: LoginService, private notify: NotificationService, private router: Router) { }
+  constructor(public loginSrv: LoginService, private notify: NotificationService, private router: Router,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.cambiaTexto();
@@ -37,8 +39,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  registrar() {
-    this.router.navigateByUrl('/registro');
+  registrar(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    // this.router.navigateByUrl('/registro');
   }
 
   private cambiaTexto() {

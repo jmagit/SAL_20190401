@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PersonasListComponent, PersonasViewComponent, PersonasEditComponent, PersonasAddComponent } from './personas/personas.component';
 import { AuthGuard, RegisterUserComponent } from './security';
 import { DinamicoComponent } from './dinamico/dinamico.component';
+import { BlogListComponent, BlogAddComponent, BlogEditComponent, BlogViewComponent } from './blog/blog.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent},
@@ -17,6 +18,13 @@ const routes: Routes = [
       { path: '', component: PersonasViewComponent},
       { path: '**', component: PersonasViewComponent},
     ]},
+  ]},
+  { path: 'blog', children: [
+    { path: '', component: BlogListComponent },
+    { path: 'add', component: BlogAddComponent},
+    { path: ':id/edit', component: BlogEditComponent},
+    { path: ':id', component: BlogViewComponent},
+    { path: ':id/:kk', component: BlogViewComponent},
   ]},
   { path: 'dinamico', component: DinamicoComponent},
   { path: 'registro', component: RegisterUserComponent},

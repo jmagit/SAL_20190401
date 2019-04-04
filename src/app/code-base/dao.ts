@@ -1,8 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-
-export abstract class RESTDAOService<T, K> {
+export interface IDAOService<T, K> {
+  query(): Observable<T>;
+  get(id: K): Observable<T>;
+  add(item: T): Observable<T>;
+  change(id: K, item: T): Observable<T>;
+  remove(id: K): Observable<T>;
+}
+export abstract class RESTDAOService<T, K> implements IDAOService<T, K> {
   protected baseUrl = environment.apiURL;
   constructor(
     protected http: HttpClient,

@@ -21,6 +21,9 @@ import { NotificationComponent } from './notification/notification.component';
 import { AjaxWaitInterceptor, AjaxWaitComponent } from './ajax-wait/ajax-wait';
 import { SecurityModule, LoggingInterceptor, AuthInterceptor } from './security';
 import { DinamicoComponent } from './dinamico/dinamico.component';
+import { BLOG_COMPONENT } from './blog/blog.component';
+import {EditorModule} from 'primeng/editor';
+import {InplaceModule} from 'primeng/inplace';
 
 @NgModule({
   declarations: [
@@ -32,11 +35,12 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
     NotificationComponent,
     AjaxWaitComponent,
     DinamicoComponent,
+    BLOG_COMPONENT,
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule,
-    NgbModule,
+    NgbModule, EditorModule, InplaceModule,
     MyCoreModule, CommonAppModule, SecurityModule,
   ],
   providers: [
