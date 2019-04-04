@@ -57,6 +57,38 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "es": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "src/messages/messages.ts",
+                  "with": "src/messages/messages.es.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "outputPath": "dist/curso/es/",
+              "i18nFile": "src/messages/messages.es.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "es"
             }
           }
         },
@@ -69,8 +101,11 @@
           "configurations": {
             "production": {
               "browserTarget": "curso:build:production"
+            },
+            "es": {
+              "browserTarget": "curso:build:es"
             }
-          }
+                  }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

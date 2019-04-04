@@ -20,7 +20,7 @@ export class RegisterUserComponent implements OnInit {
 
   passwordMatchValidator(g: FormGroup) {
     return g.get('passwordValue').value === g.get('passwordConfirm').value ? null : {'mismatch': true};
- }
+  }
 
   ngOnInit() {
     // const fa = new FormArray([]);
@@ -40,6 +40,13 @@ export class RegisterUserComponent implements OnInit {
       if (this.miForm.controls[name] instanceof FormControl) {
         this.miForm.controls[name].valueChanges.subscribe(
           data => { this.formatErrorMessage(this.miForm.controls[name] as FormControl); }
+        );
+      }
+    }
+    for (const name in (this.miForm.get('password') as FormGroup).controls) {
+      if ((this.miForm.get('password') as FormGroup).controls[name] instanceof FormControl) {
+        (this.miForm.get('password') as FormGroup).controls[name].valueChanges.subscribe(
+          data => { this.formatErrorMessage((this.miForm.get('password') as FormGroup).controls[name] as FormControl); }
         );
       }
     }
@@ -75,6 +82,10 @@ export class RegisterUserComponent implements OnInit {
     (this.miForm.get('roles') as FormArray).removeAt(ind);
   }
   send() {
+    if(this.miForm.invalid) {
+      this.notify.add('Datos invalidos');
+      return;
+    }
     const data = this.miForm.value;
     this.model = ({
       idUsuario: data.idUsuario,

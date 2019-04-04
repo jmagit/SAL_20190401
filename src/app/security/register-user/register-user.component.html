@@ -11,7 +11,8 @@
   <div class="form-group">
     <label>Name:
     </label>
-    <input class="form-control" [class.is-invalid]="miForm.hasError('customMsg', 'nombre')" type="text" formControlName="nombre">
+    <input class="form-control" [class.is-invalid]="miForm.hasError('customMsg', 'nombre')" type="text"
+      formControlName="nombre">
     <span class="invalid-feedback" [class.is-invalid]="miForm.hasError('customMsg', 'nombre')">{{miForm.getError('customMsg', 'nombre')}}</span>
     {{miForm.get('nombre')?.errors | json}}
   </div>
@@ -35,7 +36,7 @@
   </fieldset>
   <div formArrayName="roles">
     <h4>Roles
-      <button class="btn btn-info btn-sm" (click)="addRole()">Add Role</button>
+      <button type="button" class="btn btn-info btn-sm" (click)="addRole()">Add Role</button>
     </h4>
 
     <ul *ngFor="let row of $any(miForm.get('roles')).controls; let i=index" [formGroupName]="i">
@@ -52,5 +53,5 @@
       </li>
     </ul>
   </div>
-  <button class="btn btn-outline-primary" [disabled]="miForm.invalid">Send</button>
+  <button type="submit" class="btn btn-outline-primary" >Send</button>
 </form>{{ miForm.value | json }}
