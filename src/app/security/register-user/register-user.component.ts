@@ -82,7 +82,7 @@ export class RegisterUserComponent implements OnInit {
     (this.miForm.get('roles') as FormArray).removeAt(ind);
   }
   send(cierre = null) {
-    if(this.miForm.invalid) {
+    if (this.miForm.invalid) {
       this.notify.add('Datos invalidos');
       return;
     }

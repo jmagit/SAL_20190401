@@ -1,0 +1,185 @@
+{
+  "id": "f8d7b74e-f163-4118-9616-d2ce7b1ff605",
+  "version": "2.0",
+  "name": "Demo",
+  "url": "http://localhost:4200",
+  "tests": [{
+    "id": "a409ddeb-00ef-4ae1-a6cd-fa3a1f0a76d3",
+    "name": "add persona",
+    "commands": [{
+      "id": "bc14441f-972a-4d4f-b96e-7155bcc033da",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6bf0c1bb-9257-42ff-98e6-661d38aa08fd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1280x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1cc0d469-42f3-4495-a406-0b111924a1dd",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Personas",
+      "targets": [
+        ["linkText=Personas", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Personas')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/personas')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Personas')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1691dbd0-a2a2-4cc7-8f65-ea30e1ecc608",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) input",
+      "targets": [
+        ["css=tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@value='Nuevo']", "xpath:attributes"],
+        ["xpath=//td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9e19dba5-5fcf-49db-885e-38168d8b5323",
+      "comment": "",
+      "command": "click",
+      "target": "id=id",
+      "targets": [
+        ["id=id", "id"],
+        ["name=id", "name"],
+        ["css=#id", "css:finder"],
+        ["xpath=//input[@id='id']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4fe1935f-fe69-49b4-b22d-9f96f08953d0",
+      "comment": "",
+      "command": "type",
+      "target": "id=id",
+      "targets": [
+        ["id=id", "id"],
+        ["name=id", "name"],
+        ["css=#id", "css:finder"],
+        ["xpath=//input[@id='id']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": "0"
+    }, {
+      "id": "d09c7548-c0a8-455d-bb11-64856c63eecf",
+      "comment": "",
+      "command": "click",
+      "target": "id=nombre",
+      "targets": [
+        ["id=nombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#nombre", "css:finder"],
+        ["xpath=//input[@id='nombre']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b8c4a8e-8f42-4dd8-8310-f908c6c74052",
+      "comment": "",
+      "command": "type",
+      "target": "id=nombre",
+      "targets": [
+        ["id=nombre", "id"],
+        ["name=nombre", "name"],
+        ["css=#nombre", "css:finder"],
+        ["xpath=//input[@id='nombre']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "Mundo"
+    }, {
+      "id": "6ca1b381-475a-43ad-934f-f804fe9c5847",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(2) > input:nth-child(1)",
+      "targets": [
+        ["css=p:nth-child(2) > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@value='Enviar']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1cfd94b2-387e-4400-8f5c-1e4dc0c9a436",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(6) input:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(6) input:nth-child(1)", "css:finder"],
+        ["xpath=(//input[@value='Editar'])[5]", "xpath:attributes"],
+        ["xpath=//tr[6]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2fb2ee53-e510-4685-8e91-58a7b4b5409f",
+      "comment": "",
+      "command": "click",
+      "target": "id=apellidos",
+      "targets": [
+        ["id=apellidos", "id"],
+        ["name=apellidos", "name"],
+        ["css=#apellidos", "css:finder"],
+        ["xpath=//input[@id='apellidos']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "74168f15-0934-4359-b36e-a50a379c8f4c",
+      "comment": "",
+      "command": "click",
+      "target": "id=apellidos",
+      "targets": [
+        ["id=apellidos", "id"],
+        ["name=apellidos", "name"],
+        ["css=#apellidos", "css:finder"],
+        ["xpath=//input[@id='apellidos']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b6715e7-a75f-42c8-b9d0-bad7e2b74441",
+      "comment": "",
+      "command": "type",
+      "target": "id=apellidos",
+      "targets": [
+        ["id=apellidos", "id"],
+        ["name=apellidos", "name"],
+        ["css=#apellidos", "css:finder"],
+        ["xpath=//input[@id='apellidos']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "Mundo"
+    }, {
+      "id": "af83d3ed-1e33-414f-a518-1f7e0575d87c",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(2) > input:nth-child(1)",
+      "targets": [
+        ["css=p:nth-child(2) > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@value='Enviar']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "3e25be21-8404-4663-9e11-e85e57c4c275",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a409ddeb-00ef-4ae1-a6cd-fa3a1f0a76d3"]
+  }],
+  "urls": ["http://localhost:4200/"],
+  "plugins": []
+}
