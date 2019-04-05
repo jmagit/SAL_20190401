@@ -43,6 +43,10 @@ export class LoginComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
     // this.router.navigateByUrl('/registro');
   }
+  sendRegistrar(register, modal) {
+    register.send(() => modal.close('Save click'));
+    // this.router.navigateByUrl('/registro');
+  }
 
   private cambiaTexto() {
     this.txtButon = this.loginSrv.isAutenticated ? 'Log Out' : 'Log In';

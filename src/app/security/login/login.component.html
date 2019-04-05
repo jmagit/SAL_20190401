@@ -7,7 +7,7 @@
         [ngModelOptions]="{standalone: true}">
       <div class="input-group-append">
         <input class="btn btn-outline-success btn-sm" type="button" [disabled]="logForm.invalid" value="Enviar" (click)="logInOut()">
-        <input class="btn btn-outline-success btn-sm" type="button" value="Registrar" (click)="registrar()">
+        <input class="btn btn-outline-success btn-sm" type="button" value="Registrar" (click)="registrar(content)">
       </div>
     </div>
   </form>
@@ -24,9 +24,9 @@
       </button>
     </div>
     <div class="modal-body">
-      <app-register-user></app-register-user>
+      <app-register-user #register></app-register-user>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="sendRegistrar(register, modal)">Save</button>
     </div>
   </ng-template>

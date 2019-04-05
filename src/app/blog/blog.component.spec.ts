@@ -6,19 +6,18 @@ import { LoggerService } from 'src/my-core';
 import { BlogVMService } from './blog-vm.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('BlogComponent', () => {
   let component: BlogComponent;
   let fixture: ComponentFixture<BlogComponent>;
 
   beforeEach(async(() => {
-    const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
     TestBed.configureTestingModule({
       declarations: [ BlogComponent ],
       schemas:      [ NO_ERRORS_SCHEMA ],
-      providers:    [ BlogVMService, LoggerService,
-        { provide: Router, useValue: routerSpy } ],
-      imports: [ HttpClientTestingModule, ],
+      providers:    [ BlogVMService, LoggerService, ],
+      imports: [ HttpClientTestingModule, RouterTestingModule ],
     })
     .compileComponents();
   }));

@@ -10,8 +10,7 @@ export enum NotificationType {
 }
 
 export class Notification {
-  constructor(private id: number, private message: string,
-    private type: NotificationType) {}
+  constructor(private id: number, private message: string, private type: NotificationType) {}
 
   public get Id() { return this.id; }
   public set Id(valor: number) { if (this.id !== valor) { this.id = valor; } }

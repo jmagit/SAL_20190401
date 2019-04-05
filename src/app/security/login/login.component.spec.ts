@@ -2,13 +2,19 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MyCoreModule, LoggerService } from 'src/my-core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
-xdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ MyCoreModule, FormsModule, HttpClientTestingModule, RouterTestingModule, ],
+      providers: [ LoggerService ],
       declarations: [ LoginComponent ],
       schemas:      [ NO_ERRORS_SCHEMA ]
     })

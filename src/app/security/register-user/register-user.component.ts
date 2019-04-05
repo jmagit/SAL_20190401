@@ -70,7 +70,7 @@ export class RegisterUserComponent implements OnInit {
       if (cntr.hasError('mismatch')) {
         msg += 'No coincide. ';
       }
-      cntr.setErrors({'customMsg': msg.trim()});
+      cntr.setErrors({customMsg: msg.trim()});
     }
   }
   addRole() {
@@ -81,7 +81,7 @@ export class RegisterUserComponent implements OnInit {
   deleteRole(ind: number) {
     (this.miForm.get('roles') as FormArray).removeAt(ind);
   }
-  send() {
+  send(cierre = null) {
     if(this.miForm.invalid) {
       this.notify.add('Datos invalidos');
       return;
@@ -99,7 +99,8 @@ export class RegisterUserComponent implements OnInit {
           datos => {
             if (datos) {
               this.notify.add('Ususario reguistrado', NotificationType.log);
-              this.router.navigateByUrl('/');
+              // this.router.navigateByUrl('/');
+              if (cierre) { cierre(); }
             } else {
               this.notify.add('Error en el registro.');
             }

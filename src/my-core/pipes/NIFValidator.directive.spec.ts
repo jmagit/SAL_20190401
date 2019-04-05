@@ -1,7 +1,7 @@
 import { NIFValidator } from 'src/my-core/directives/validaciones.directive';
 import { FormControl } from '@angular/forms';
 
-fdescribe('Validacion de NIF', () => {
+describe('Validacion de NIF', () => {
   let fn: any;
   beforeAll(() => {
     fn = NIFValidator();
